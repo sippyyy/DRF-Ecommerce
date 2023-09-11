@@ -5,7 +5,7 @@ pytestmark = pytest.mark.django_db
 
 class TestCategoryModel:
     def test_string_method(self, category_factory):
-        x = category_factory()
+        x = category_factory(name="test_category")
         assert x.__str__() == "test_category"
 
 

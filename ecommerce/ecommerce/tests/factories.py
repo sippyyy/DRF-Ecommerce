@@ -7,7 +7,7 @@ class CategoryFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Category
 
-    name = "test_category"
+    name = factory.Sequence(lambda x: "Category_%d" % x)
 
 
 class BrandFactory(factory.django.DjangoModelFactory):
