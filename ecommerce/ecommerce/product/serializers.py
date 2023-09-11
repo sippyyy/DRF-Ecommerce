@@ -3,9 +3,11 @@ from .models import Brand, Category, Product
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    parent = serializers.ReadOnlyField()
+
     class Meta:
         model = Category
-        fields = "__all__"
+        fields = ["name", "parent"]
 
 
 class BrandSerializer(serializers.ModelSerializer):
@@ -15,6 +17,9 @@ class BrandSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    brand = BrandSerializer()
+    category = CategorySerializer()
+
     class Meta:
-        models = Product
+        model = Product
         fields = "__all__"
