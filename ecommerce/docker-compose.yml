@@ -1,0 +1,19 @@
+version: '3.8'
+
+networks:
+  mynetwork:
+    driver: bridge
+
+services:
+  backend:
+    tty: true
+    restart : always
+    environment:
+      - SECRET_KEY=(+f!e38y&vt28ih7vi7^eogw#^@aum4x8n#1jb-nc0ch=fm=o
+    ports:
+     - "8000:8000"
+    build:
+     context: .
+     dockerfile: Dockerfile
+    networks:
+      - mynetwork
